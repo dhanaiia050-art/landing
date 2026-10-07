@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKJ - SMKN 2 Tembilahan</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #0b5ed7;
+            --dark-color: #0f172a;
+            --light-bg: #f8fafc;
+            --text-color: #334155;
+            --white: #ffffff;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(13, 110, 253, 0.8)), 
+                        url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 100vh;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            color: var(--white);
+        }
+
+        .btn-wa:hover {
+            background-color: #1ebc57;
+            transform: translateY(-3px);
+        }
+
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: var(--white);
+        }
+
+        .btn-ig:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+        }
+
+        /* --- SECTION GENERAL --- */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 25%;
+        }
+
+        /* --- ABOUT / PROFIL --- */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        /* --- KELAS & SISWA --- */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .class-card {
+            background-color: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .class-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .class-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .class-card .count {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            background: var(--light-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* --- GALERI FOTO --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            height: 220px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            opacity: 0.7;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-network-wired"></i> TKJ SMKN 2 TEMBILAHAN
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Profil</a></li>
+                <li><a href="#kelas">Kelas</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Teknik Komputer & Jaringan</h1>
+            <p>Mencetak Generasi Unggul, Ahli dalam Jaringan, Hardware, dan Teknologi Informasi di SMKN 2 Tembilahan.</p>
+            <div class="btn-group">
+                <a href="https://wa.me/6285126246563" target="_blank" class="btn btn-wa">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://instagram.com/official.smkn2tembilahan" target="_blank" class="btn btn-ig">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFIL JURUSAN -->
+    <section id="about">
+        <div class="section-title">
+            <h2>Profil Jurusan</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Siswa TKJ Praktikum">
+            </div>
+            <div class="about-text">
+                <h3>Selamat Datang di TKJ SMKN 2 Tembilahan</h3>
+                <p>Jurusan Teknik Komputer dan Jaringan (TKJ) SMKN 2 Tembilahan berfokus pada penguasaan perakitan komputer, instalasi jaringan LAN/WAN, konfigurasi server, serta keamanan jaringan.</p>
+                <br>
+                <p>Dengan fasilitas laboratorium yang memadai dan kurikulum berbasis industri, kami siap melahirkan tenaga ahli muda yang profesional dan siap kerja.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KELAS & JUMLAH SISWA -->
+    <section id="kelas">
+        <div class="section-title">
+            <h2>Daftar Kelas TKJ</h2>
+        </div>
+        <div class="class-grid">
+            <!-- Kelas 1 -->
+            <div class="class-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>X. TKJ 1</h3>
+                <div class="count"><i class="fa-solid fa-users"></i> 29 Siswa</div>
+            </div>
+            <!-- Kelas 2 -->
+            <div class="class-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>X. TKJ 2</h3>
+                <div class="count"><i class="fa-solid fa-users"></i> 30 Siswa</div>
+            </div>
+            <!-- Kelas 3 -->
+            <div class="class-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>XI. TKJ 1</h3>
+                <div class="count"><i class="fa-solid fa-users"></i> 29 Siswa</div>
+            </div>
+            <!-- Kelas 4 -->
+            <div class="class-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>XI. TKJ 2</h3>
+                <div class="count"><i class="fa-solid fa-users"></i> 28 Siswa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI FOTO KEGIATAN -->
+    <section id="galeri">
+        <div class="section-title">
+            <h2>Galeri Kegiatan</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Praktikum Server">
+                <div class="gallery-overlay">Konfigurasi Server & Network</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=600&q=80" alt="Perakitan Komputer">
+                <div class="gallery-overlay">Perakitan Hardware Komputer</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Belajar Coding">
+                <div class="gallery-overlay">Praktikum Jaringan Komputer</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Diskusi Kelompok">
+                <div class="gallery-overlay">Diskusi Kelompok & Project</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://wa.me/6285126246563" target="_blank" class="btn btn-wa">
+                <i class="fa-brands fa-whatsapp"></i> Hubungi WA
+            </a>
+            <a href="https://instagram.com/official.smkn2tembilahan" target="_blank" class="btn btn-ig">
+                <i class="fa-brands fa-instagram"></i> Instagram Official
+            </a>
+        </div>
+        <p><strong>SMKN 2 Tembilahan</strong> - Jurusan Teknik Komputer dan Jaringan</p>
+        <div class="copyright">
+            &copy; 2026 TKJ SMKN 2 Tembilahan. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
